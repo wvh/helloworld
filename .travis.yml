@@ -1,0 +1,10 @@
+language: go
+
+go:
+  - "1.11.x"
+  - "1.12.x"
+  - "1.x"
+
+install: go get -v -t ./...
+
+script: go build -v ./...

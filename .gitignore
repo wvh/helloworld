@@ -1,0 +1,5 @@
+# lingering test binaries
+*.test
+
+# go coverage tool
+*.out
