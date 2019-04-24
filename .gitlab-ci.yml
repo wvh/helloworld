@@ -1,0 +1,41 @@
+image: golang:latest
+
+variables:
+  GOPATH="$CI_PROJECT_DIR/.cache"
+
+cache:
+  paths:
+    - /apt-cache
+    - /go/src/github.com
+    - /go/src/golang.org
+    - /go/src/google.golang.org
+    - /go/src/gopkg.in
+    - .cache
+
+stages:
+  - test
+  - build
+
+before_script:
+  - go get -v -d ./...
+
+tests:
+  stage: test
+  script:
+    - go test -v ./...
+
+vet:
+  stage: test
+  script:
+    - go vet ./...
+
+print_gopath:
+  stage: test
+  script:
+    - echo GOPATH: $GOPATH
+    - go env GOPATH
+
+build:
+  stage: build
+  script:
+    - go build -v ./...
