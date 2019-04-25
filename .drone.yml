@@ -1,0 +1,63 @@
+kind: pipeline
+name: default
+
+#workspace:
+#  base: /app
+
+steps:
+- name: go-mod-download
+  image: golang:1
+  volumes:
+    - name: deps
+      path: /go
+  commands:
+    - go mod download
+
+- name: test
+  image: golang:1
+  volumes:
+    - name: deps
+      path: /go
+  environment:
+    APP_DEBUG: 0
+  commands:
+    - go test -v -short ./...
+  when:
+    branch:
+      - master
+    event:
+      - push
+  depends_on:
+    - go-mod-download
+
+- name: build
+  image: golang:1
+  volumes:
+    - name: deps
+      path: /go
+  environment:
+    APP_DEBUG: 0
+  commands:
+    - go build -v
+  when:
+    event:
+      - tag
+  depends_on:
+    - go-mod-download
+
+- name: deploy-production
+  image: golang:1
+  commands:
+    - echo deploy-production
+  when:
+    event:
+      - promote
+    target:
+      - production
+  depends_on:
+    - test
+    - build
+
+volumes:
+- name: deps
+  temp: {}
