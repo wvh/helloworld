@@ -11,8 +11,8 @@ steps:
     - name: deps
       path: /go
   environment:
-    - DRONE_VERSION: $DRONE_SYSTEM_VERSION
-    - GOLANG_VERSION: $GOLANG_VERSION
+    - DRONE_VERSION=${DRONE_SYSTEM_VERSION}
+    - GOLANG_VERSION=${GOLANG_VERSION}
   commands:
     - uname -a
     - echo "drone version: $DRONE_VERSION"
