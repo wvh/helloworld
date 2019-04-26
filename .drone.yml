@@ -17,7 +17,7 @@ steps:
     - uname -a
 #    - echo drone version\: $DRONE_SYSTEM_VERSION
 #    - echo go version\: $GOLANG_VERSION
-    - echo drone version
+    - echo drone version $$DRONE_SYSTEM_VERSION
     - echo go version
     - git version || echo "git not found"
     - go version
