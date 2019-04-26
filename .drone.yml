@@ -11,8 +11,7 @@ steps:
     - name: deps
       path: /go
   commands:
-    - uname -a
-    - lsb_release -s -d 2>/dev/null || { . /etc/os-release && echo $NAME; } 2>/dev/null || uname -a
+    - lsb_release -s -d 2>/dev/null || { . /etc/os-release && echo $PRETTY_NAME; } 2>/dev/null || uname -a
     - echo drone version:"" $$DRONE_SYSTEM_VERSION
     - echo go version:"" $$GOLANG_VERSION
     - git version || echo "git not found"
