@@ -14,9 +14,8 @@ steps:
     - env
     - uname -a
     - git version || true
+    - nonexistent || echo "doesn't exist"
     - go version
-    - pwd
-    - ls -lart
     - go mod download
 
 - name: test
