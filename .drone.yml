@@ -11,10 +11,10 @@ steps:
     - name: deps
       path: /go
   commands:
-    - env
     - uname -a
-    - git version || true
-    - nonexistent || echo "doesn't exist"
+    - echo drone version: $DRONE_SYSTEM_VERSION
+    - echo go version: $GOLANG_VERSION
+    - git version || echo "git not found"
     - go version
     - go mod download
 
