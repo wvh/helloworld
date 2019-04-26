@@ -11,6 +11,10 @@ steps:
     - name: deps
       path: /go
   commands:
+    - env
+    - uname -a
+    - git version
+    - go version
     - go mod download
 
 - name: test
@@ -48,7 +52,7 @@ steps:
 - name: deploy-production
   image: golang:1
   commands:
-    - echo deploy-production
+    - echo promoted to production
   when:
     event:
       - promote
