@@ -1,8 +1,8 @@
 kind: pipeline
 name: default
 
-workspace:
-  base: /app
+#workspace:
+#  base: /app
 
 steps:
 - name: go-mod-download
@@ -16,7 +16,6 @@ steps:
     - git version || echo "git not found"
     - go version
     - go mod download
-    - pwd
 
 - name: test
   image: golang:1
