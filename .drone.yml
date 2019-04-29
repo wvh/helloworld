@@ -16,6 +16,7 @@ steps:
     - git version || echo "git not found"
     - go version
     - go mod download
+    - pwd
 
 - name: test
   image: golang:1
