@@ -32,7 +32,7 @@ vet:
 print_gopath:
   stage: test
   script:
-    - echo GOPATH: $GOPATH
+    - echo GOPATH:"" $GOPATH
     - go env GOPATH
 
 build:
