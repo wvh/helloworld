@@ -1,7 +1,7 @@
 image: golang:latest
 
 variables:
-  GOPATH="$CI_PROJECT_DIR/.cache"
+  GOPATH: "$CI_PROJECT_DIR/.cache"
 
 cache:
   paths:
