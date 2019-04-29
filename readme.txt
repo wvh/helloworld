@@ -1,1 +1,1 @@
-This is an example program to test automated builds and CI pipelines.
+This is an example repository to test automated builds and CI pipelines.
