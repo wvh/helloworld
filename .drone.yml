@@ -34,6 +34,21 @@ steps:
   depends_on:
     - go-mod-download
 
+- name: slack
+  image: plugins/slack
+  settings:
+    webhook:
+      from_secret: slack_webhook_for_test
+    username: drone
+    channel: test
+    link_names: true
+    template: >
+      {{#success build.status}}
+        build {{build.number}} succeeded. Good job.
+      {{else}}
+        build {{build.number}} failed. Fix me please.
+      {{/success}}
+
 - name: build
   image: golang:1
   volumes:
